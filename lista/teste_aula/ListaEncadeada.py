@@ -16,16 +16,15 @@ class Lista:
         return self.tamanho
 
     def __len__(self):
-        return self.tamanho
+        return self.size()
 
     def append(self, valor):
         if self.final is None:
             self.inicial = self.final = Node(valor)
-            self.tamanho += 1
         else:
             self.final.proximo = Node(valor)
             self.final = self.final.proximo
-            self.tamanho += 1
+        self.tamanho += 1
 
     def addFirst(self, valor):
         no = Node(valor) # Cria o nó com o valor
@@ -43,12 +42,12 @@ class Lista:
             iter  = iter.proximo
         anterior.proximo = None
         self.tamanho -= 1
-        return self.last()
+        return self.last()  # TODO Revisar! (Errado o conceito)
 
     def removeFirst(self):
-        self.inicial = self.inicial.proximo
+        self.inicial = self.inicial.proximo # TODO Revisar! (Tem bug)
 
-    def remove(self, valor):
+    def remove(self, valor):  # TODO Revisar! (Deve estar certo, mas nao e o melhor.)
         iter = self.first()
         anterior = None
         while iter is not None:
