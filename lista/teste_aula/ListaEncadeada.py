@@ -42,9 +42,11 @@ class Lista:
             iter  = iter.proximo
         anterior.proximo = None
         self.tamanho -= 1
-        return self.last()  # TODO Revisar! (Errado o conceito)
+        return anterior.dado  # TODO Revisar! (Errado o conceito)
 
     def removeFirst(self):
+        if self.inicial is self.final:
+            pass
         self.inicial = self.inicial.proximo # TODO Revisar! (Tem bug)
 
     def remove(self, valor):  # TODO Revisar! (Deve estar certo, mas nao e o melhor.)
@@ -87,4 +89,7 @@ if __name__ == '__main__':
     lista.addFirst(5)
     lista.list()
     lista.remove(5)
+    lista.list()
+    i = lista.pop()
+    print(i)
     lista.list()
