@@ -7,7 +7,7 @@ class Node:
         self.proximo = None
 
 
-class Lista:
+class ListaEncadeadaSimples:
     def __init__(self):
         self.head = None
         self.tail = None
@@ -50,7 +50,7 @@ class Main:
     def __init__(self):
         print("Criando lista encadeada!")
 
-        lista = Lista()
+        lista = ListaEncadeadaSimples()
 
         for item in range(5):
             lista.append(randint(0, 100))
