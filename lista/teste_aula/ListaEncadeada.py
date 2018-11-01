@@ -78,18 +78,33 @@ class Lista:
             iter = iter.proximo
         print("="*30)
 
+    def insert(self, valor):
+        if self.first() is None:
+            self.append(valor)
+        elif valor < self.first().dado:
+            self.addFirst(valor)
+        elif valor > self.last().dado:
+            self.append(valor)
+        else:
+            iter = self.first()
+            anterior = proximo = None
+            while iter is not None:
+                anterior = iter
+                proximo = iter.proximo
+                if iter.proximo is not None:
+                    if valor > anterior.dado and valor < proximo.dado:
+                        no = Node(valor)
+                        no.proximo = proximo
+                        anterior.proximo  = no
+                elif iter.proximo is None:
+                    print(valor)
+                iter = iter.proximo
+
 
 if __name__ == '__main__':
     lista = Lista()
 
-    for item in range(10):
-        lista.append(item)
+    for i in range(randint(10, 50)):
+        lista.insert(randint(0, 100))
 
-    lista.append(5)
-    lista.addFirst(5)
-    lista.list()
-    lista.remove(5)
-    lista.list()
-    i = lista.pop()
-    print(i)
     lista.list()
